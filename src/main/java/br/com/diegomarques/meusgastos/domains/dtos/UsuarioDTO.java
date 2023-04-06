@@ -13,6 +13,8 @@ public class UsuarioDTO {
 	private String photo;
 	
 	private LocalDate dateInativacao;
+	
+	private LocalDate dateCadastro;
 
 	
 	
@@ -55,6 +57,16 @@ public class UsuarioDTO {
 	public void setDateInativacao(LocalDate dateInativacao) {
 		this.dateInativacao = dateInativacao;
 	}
+
+	public LocalDate getDateCadastro() {
+		return dateCadastro;
+	}
+
+	public void setDateCadastro(LocalDate dateCadastro) {
+		this.dateCadastro = dateCadastro;
+	}
+	
+	
 	
 	
 }
