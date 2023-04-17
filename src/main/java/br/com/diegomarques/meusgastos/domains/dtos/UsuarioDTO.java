@@ -2,6 +2,7 @@ package br.com.diegomarques.meusgastos.domains.dtos;
 
 import java.time.LocalDate;
 
+//Response
 public class UsuarioDTO {
 
 	private Long id;

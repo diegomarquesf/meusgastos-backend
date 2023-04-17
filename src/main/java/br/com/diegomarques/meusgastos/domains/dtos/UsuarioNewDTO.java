@@ -1,4 +1,6 @@
 package br.com.diegomarques.meusgastos.domains.dtos;
+
+//Request
 public class UsuarioNewDTO {
 	
 	private String name;

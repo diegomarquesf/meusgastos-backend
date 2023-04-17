@@ -76,7 +76,8 @@ public class JwtUtil {
 		return claims.getSubject();
 	}
 	
-	//Validar o token
+	//Validar o token 
+	
 	public boolean isValidToken(String token) {
 		Claims claims = getClaims(token);
 		

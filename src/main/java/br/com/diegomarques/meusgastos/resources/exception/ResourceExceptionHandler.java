@@ -41,6 +41,15 @@ public class ResourceExceptionHandler {
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
 	}
+	
+	@ExceptionHandler(Exception.class)
+    public ResponseEntity<StandardError> handlerRequestException(Exception ex, HttpServletRequest request) {
+
+        StandardError error = new StandardError(System.currentTimeMillis(),HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal Server Error",  ex.getMessage());
+        		
+
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
 
 

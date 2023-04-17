@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class ConverterLocalDate {
 	
-	public static String Converter(LocalDate localDate) {
+	public static String converter(LocalDate localDate) {
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYY HH:mm:ss");
 		return format.format(localDate);
