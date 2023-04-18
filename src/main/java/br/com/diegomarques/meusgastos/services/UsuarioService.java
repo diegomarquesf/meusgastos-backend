@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -26,6 +27,9 @@ public class UsuarioService implements ICRUDService<UsuarioNewDTO, UsuarioDTO>{
 	
 	@Autowired
 	private ModelMapper mapper;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public List<UsuarioDTO> findAll() {
@@ -67,6 +71,10 @@ public class UsuarioService implements ICRUDService<UsuarioNewDTO, UsuarioDTO>{
 		}
 		
 		Usuario usuario = mapper.map(dto, Usuario.class);
+		
+		String senha = passwordEncoder.encode(usuario.getPassword());
+		usuario.setPassword(senha);
+		
 		usuario.setId(null);
 		usuario.setDateCadastro(LocalDate.now());
 		//encode
@@ -80,6 +88,10 @@ public class UsuarioService implements ICRUDService<UsuarioNewDTO, UsuarioDTO>{
 		UsuarioDTO usuarioBanco = findById(id);
 		validaUsuario(dto);
 		Usuario usuario = mapper.map(dto, Usuario.class);
+		
+		String senha = passwordEncoder.encode(dto.getPassword());
+		usuario.setPassword(senha);
+		
 		usuario.setId(id);
 		usuario.setDateInativacao(usuarioBanco.getDateInativacao());
 		usuario.setDateCadastro(usuarioBanco.getDateCadastro());
